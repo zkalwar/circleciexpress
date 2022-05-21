@@ -1,23 +1,7 @@
-version: 2.1
-executors:
-  my-custom-executor:
-    docker:
-      - image: cimg/base:stable
-        auth:
-          # ensure you have first added these secrets
-          # visit app.circleci.com/settings/project/github/zkalwar/circleciexpress/environment-variables
-          username: $DOCKER_HUB_USER
-          password: $DOCKER_HUB_PASSWORD
-jobs:
-  my-job-namezk1:
-
-    executor: my-custom-executor
-    steps:
-      - checkout
-      - run: |
-          # echo Hello, World!
-
+version: 2.1 
+orbs:
+node: circleci/node@3.0.0
 workflows:
-  my-custom-workflow:
-    jobs:
-      - my-job-namezk1
+node-tests: 
+jobs:
+- node/test
